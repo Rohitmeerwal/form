@@ -257,10 +257,7 @@
             <label for="email">Email Address <span class="req">*</span></label>
             <input id="email" name="email" type="email" autocomplete="email" required />
           </div>
-          <div class="field">
-            <label for="IPAddress">Opt-In IP Address <span class="req">*</span></label>
-            <input id="IPAddress" name="IPAddress" placeholder="e.g. 192.168.1.1" required />
-          </div>
+          <input id="IPAddress" name="IPAddress" type="hidden" />
           <div class="field full">
             <label for="RobloxAbuse">Were you or someone you love sexually abused or assaulted on Roblox? You may be
               entitled to compensation. <span class="req">*</span></label>
@@ -341,7 +338,7 @@
   </div>
 
   <script>
-    const POST_URL = "https://nlcr.cagsys.com/leadPost.php?cid=61&fid=3224";
+    const POST_URL = "https://nlcr.cagsys.com/leadPost.php?cid=61&fid=322 4";
 
     const form = document.getElementById("intakeForm");
     const statusEl = document.getElementById("status");
@@ -356,6 +353,13 @@
       return (document.getElementById(id)?.value || "").trim();
     }
 
+    // ── Fetch visitor IP and store it ───────────────────────
+    let visitorIP = "";
+    fetch("https://api.ipify.org?format=json")
+      .then(r => r.json())
+      .then(data => { visitorIP = data.ip || ""; })
+      .catch(() => { visitorIP = ""; });
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       statusEl.className = "status";
@@ -367,7 +371,6 @@
         { id: "phone", label: "Home Phone" },
         { id: "state", label: "State" },
         { id: "email", label: "Email Address" },
-        { id: "IPAddress", label: "IP Address" },
         { id: "RobloxAbuse", label: "Roblox Abuse" },
       ];
 
@@ -379,6 +382,15 @@
         }
       }
 
+      // ── If IP not yet fetched, fetch it now before submitting ──
+      if (!visitorIP) {
+        try {
+          const r = await fetch("https://api.ipify.org?format=json");
+          const data = await r.json();
+          visitorIP = data.ip || "";
+        } catch (_) { visitorIP = ""; }
+      }
+
       // ── Build form-encoded payload ──────────────────────────
       const fields = {
         fname: val("fname"),
@@ -386,7 +398,7 @@
         phone: val("phone"),
         state: val("state"),
         email: val("email"),
-        IPAddress: val("IPAddress"),
+        IPAddress: visitorIP,          // always included, auto-filled
         RobloxAbuse: val("RobloxAbuse"),
         // optional
         initial: val("initial"),
@@ -403,9 +415,9 @@
         VendorLeadId: val("VendorLeadId"),
       };
 
-      // Remove empty optional fields
+      // Remove empty optional fields (but keep IPAddress always)
       Object.keys(fields).forEach(k => {
-        if (!fields[k]) delete fields[k];
+        if (k !== "IPAddress" && !fields[k]) delete fields[k];
       });
 
       const body = new URLSearchParams(fields).toString();
