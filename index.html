@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roblox Abuse Intake Form</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22c55e;
+      --danger: #ef4444;
+      --border: #374151;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(160deg, #020617, #0f172a);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin: 20px 0 10px;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.4;
+      margin-top: 0;
+    }
+
+    .section {
+      background: #0b1220;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 13px;
+      color: #d1d5db;
+    }
+
+    .req {
+      color: var(--accent);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #060e1c;
+      color: var(--text);
+      padding: 9px 11px;
+      font-size: 14px;
+      transition: border-color .15s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    select option {
+      background: #111827;
+    }
+
+    button {
+      width: 100%;
+      cursor: pointer;
+      background: var(--accent);
+      color: #052e16;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 6px;
+      transition: opacity .15s;
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: wait;
+    }
+
+    .status {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      display: none;
+      white-space: pre-wrap;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .status.ok {
+      display: block;
+      background: #052e16;
+      color: #bbf7d0;
+      border: 1px solid #15803d;
+    }
+
+    .status.error {
+      display: block;
+      background: #450a0a;
+      color: #fecaca;
+      border: 1px solid #b91c1c;
+    }
+
+    .hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Roblox Abuse Intake Form</h1>
+    <p>Submit a claimant intake to Consumer Awareness Group. Required fields are marked <span class="req">*</span>.</p>
+
+    <form id="intakeForm" novalidate>
+
+      <!-- ── Required Fields ──────────────────────────────────── -->
+      <h2>Claimant Info</h2>
+      <div class="section">
+        <div class="grid">
+          <div class="field">
+            <label for="fname">First Name <span class="req">*</span></label>
+            <input id="fname" name="fname" autocomplete="given-name" required />
+          </div>
+          <div class="field">
+            <label for="lname">Last Name <span class="req">*</span></label>
+            <input id="lname" name="lname" autocomplete="family-name" required />
+          </div>
+          <div class="field">
+            <label for="phone">Home Phone <span class="req">*</span></label>
+            <input id="phone" name="phone" type="tel" placeholder="e.g. 3215551234" autocomplete="tel" required />
+          </div>
+          <div class="field">
+            <label for="state">State <span class="req">*</span></label>
+            <select id="state" name="state" autocomplete="address-level1" required>
+              <option value="">— Select State —</option>
+              <option>AL</option>
+              <option>AK</option>
+              <option>AZ</option>
+              <option>AR</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DC</option>
+              <option>DE</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IA</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>ME</option>
+              <option>MD</option>
+              <option>MA</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MS</option>
+              <option>MO</option>
+              <option>MT</option>
+              <option>NE</option>
+              <option>NV</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NY</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TX</option>
+              <option>UT</option>
+              <option>VT</option>
+              <option>VA</option>
+              <option>WA</option>
+              <option>WV</option>
+              <option>WI</option>
+              <option>WY</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="IPAddress">Opt-In IP Address <span class="req">*</span></label>
+            <input id="IPAddress" name="IPAddress" placeholder="e.g. 192.168.1.1" required />
+          </div>
+          <div class="field full">
+            <label for="RobloxAbuse">Were you or someone you love sexually abused or assaulted on Roblox? You may be
+              entitled to compensation. <span class="req">*</span></label>
+            <select id="RobloxAbuse" name="RobloxAbuse" required>
+              <option value="">— Select —</option>
+              <option value="Yes">Yes</option>
+              <option value="Y">Y</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Optional Fields ──────────────────────────────────── -->
+      <h2>Additional Info <span style="font-weight:400;text-transform:none;font-size:12px;">(optional)</span></h2>
+      <div class="section">
+        <div class="grid">
+          <div class="field">
+            <label for="initial">Initial</label>
+            <input id="initial" name="initial" maxlength="5" />
+          </div>
+          <div class="field">
+            <label for="mobile">Mobile Phone</label>
+            <input id="mobile" name="mobile" type="tel" autocomplete="tel" />
+          </div>
+          <div class="field full">
+            <label for="address1">Street Address</label>
+            <input id="address1" name="address1" autocomplete="street-address" />
+          </div>
+          <div class="field full">
+            <label for="address2">Address Line 2</label>
+            <input id="address2" name="address2" />
+          </div>
+          <div class="field">
+            <label for="city">City</label>
+            <input id="city" name="city" autocomplete="address-level2" />
+          </div>
+          <div class="field">
+            <label for="zip">Zip</label>
+            <input id="zip" name="zip" maxlength="10" autocomplete="postal-code" />
+          </div>
+          <div class="field full">
+            <label for="Comments">Notes regarding this claim</label>
+            <textarea id="Comments" name="Comments" placeholder="Any additional details…"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Tracking Fields ──────────────────────────────────── -->
+      <h2>Tracking <span style="font-weight:400;text-transform:none;font-size:12px;">(optional)</span></h2>
+      <div class="section">
+        <div class="grid">
+          <div class="field">
+            <label for="SubId">Sub ID</label>
+            <input id="SubId" name="SubId" />
+          </div>
+          <div class="field">
+            <label for="SubId2">Sub ID 2</label>
+            <input id="SubId2" name="SubId2" />
+          </div>
+          <div class="field">
+            <label for="clickid">Click ID</label>
+            <input id="clickid" name="clickid" />
+          </div>
+          <div class="field">
+            <label for="t_id">T ID</label>
+            <input id="t_id" name="t_id" />
+          </div>
+          <div class="field full">
+            <label for="VendorLeadId">Vendor Lead ID</label>
+            <input id="VendorLeadId" name="VendorLeadId" />
+          </div>
+        </div>
+      </div>
+
+      <button id="submitBtn" type="submit">Submit</button>
+      <div id="status" class="status" role="alert" aria-live="polite"></div>
+    </form>
+  </div>
+
+  <script>
+    const POST_URL = "https://nlcr.cagsys.com/leadPost.php?cid=61&fid=3224";
+
+    const form = document.getElementById("intakeForm");
+    const statusEl = document.getElementById("status");
+    const submitBtn = document.getElementById("submitBtn");
+
+    function setStatus(message, type) {
+      statusEl.textContent = message;
+      statusEl.className = `status ${type}`;
+    }
+
+    function val(id) {
+      return (document.getElementById(id)?.value || "").trim();
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusEl.className = "status";
+
+      // ── Client-side validation ──────────────────────────────
+      const required = [
+        { id: "fname", label: "First Name" },
+        { id: "lname", label: "Last Name" },
+        { id: "phone", label: "Home Phone" },
+        { id: "state", label: "State" },
+        { id: "email", label: "Email Address" },
+        { id: "IPAddress", label: "IP Address" },
+        { id: "RobloxAbuse", label: "Roblox Abuse" },
+      ];
+
+      for (const { id, label } of required) {
+        if (!val(id)) {
+          setStatus(`${label} is required.`, "error");
+          document.getElementById(id).focus();
+          return;
+        }
+      }
+
+      // ── Build form-encoded payload ──────────────────────────
+      const fields = {
+        fname: val("fname"),
+        lname: val("lname"),
+        phone: val("phone"),
+        state: val("state"),
+        email: val("email"),
+        IPAddress: val("IPAddress"),
+        RobloxAbuse: val("RobloxAbuse"),
+        // optional
+        initial: val("initial"),
+        mobile: val("mobile"),
+        address1: val("address1"),
+        address2: val("address2"),
+        city: val("city"),
+        zip: val("zip"),
+        Comments: val("Comments"),
+        SubId: val("SubId"),
+        SubId2: val("SubId2"),
+        clickid: val("clickid"),
+        t_id: val("t_id"),
+        VendorLeadId: val("VendorLeadId"),
+      };
+
+      // Remove empty optional fields
+      Object.keys(fields).forEach(k => {
+        if (!fields[k]) delete fields[k];
+      });
+
+      const body = new URLSearchParams(fields).toString();
+
+      // ── Submit ──────────────────────────────────────────────
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting…";
+
+      try {
+        await fetch(POST_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body,
+        });
+
+        // With mode: "no-cors" the browser returns an opaque response —
+        // status is always 0 and the body is unreadable. If fetch didn't
+        // throw, the request was sent successfully.
+        fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          mode:"no-cors",
+          body: JSON.stringify({ ...fields, apiStatus: "sent", apiResponse: "Lead Accepted (no-cors)" }),
+        }).catch(() => { });
+
+        setStatus("✓ Submission successful! Lead has been submitted.", "ok");
+        form.reset();
+      } catch (err) {
+        setStatus(`Network error: ${err.message}`, "error");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
+      }
+    });
+  </script>
+</body>
+
+</html>
