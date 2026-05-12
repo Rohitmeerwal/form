@@ -269,68 +269,6 @@
         </div>
       </div>
 
-      <!-- ── Optional Fields ──────────────────────────────────── -->
-      <h2>Additional Info <span style="font-weight:400;text-transform:none;font-size:12px;">(optional)</span></h2>
-      <div class="section">
-        <div class="grid">
-          <div class="field">
-            <label for="initial">Initial</label>
-            <input id="initial" name="initial" maxlength="5" />
-          </div>
-          <div class="field">
-            <label for="mobile">Mobile Phone</label>
-            <input id="mobile" name="mobile" type="tel" autocomplete="tel" />
-          </div>
-          <div class="field full">
-            <label for="address1">Street Address</label>
-            <input id="address1" name="address1" autocomplete="street-address" />
-          </div>
-          <div class="field full">
-            <label for="address2">Address Line 2</label>
-            <input id="address2" name="address2" />
-          </div>
-          <div class="field">
-            <label for="city">City</label>
-            <input id="city" name="city" autocomplete="address-level2" />
-          </div>
-          <div class="field">
-            <label for="zip">Zip</label>
-            <input id="zip" name="zip" maxlength="10" autocomplete="postal-code" />
-          </div>
-          <div class="field full">
-            <label for="Comments">Notes regarding this claim</label>
-            <textarea id="Comments" name="Comments" placeholder="Any additional details…"></textarea>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Tracking Fields ──────────────────────────────────── -->
-      <h2>Tracking <span style="font-weight:400;text-transform:none;font-size:12px;">(optional)</span></h2>
-      <div class="section">
-        <div class="grid">
-          <div class="field">
-            <label for="SubId">Sub ID</label>
-            <input id="SubId" name="SubId" />
-          </div>
-          <div class="field">
-            <label for="SubId2">Sub ID 2</label>
-            <input id="SubId2" name="SubId2" />
-          </div>
-          <div class="field">
-            <label for="clickid">Click ID</label>
-            <input id="clickid" name="clickid" />
-          </div>
-          <div class="field">
-            <label for="t_id">T ID</label>
-            <input id="t_id" name="t_id" />
-          </div>
-          <div class="field full">
-            <label for="VendorLeadId">Vendor Lead ID</label>
-            <input id="VendorLeadId" name="VendorLeadId" />
-          </div>
-        </div>
-      </div>
-
       <button id="submitBtn" type="submit">Submit</button>
       <div id="status" class="status" role="alert" aria-live="polite"></div>
     </form>
@@ -399,19 +337,6 @@
         email: val("email"),
         IPAddress: visitorIP,          // always included, auto-filled
         RobloxAbuse: val("RobloxAbuse"),
-        // optional
-        initial: val("initial"),
-        mobile: val("mobile"),
-        address1: val("address1"),
-        address2: val("address2"),
-        city: val("city"),
-        zip: val("zip"),
-        Comments: val("Comments"),
-        SubId: val("SubId"),
-        SubId2: val("SubId2"),
-        clickid: val("clickid"),
-        t_id: val("t_id"),
-        VendorLeadId: val("VendorLeadId"),
       };
 
       // Remove empty optional fields (but keep IPAddress always)

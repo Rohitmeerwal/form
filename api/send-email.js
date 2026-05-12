@@ -31,22 +31,6 @@ Email         : ${data.email}
 IP Address    : ${data.IPAddress || "N/A"}
 Roblox Abuse  : ${data.RobloxAbuse || "N/A"}
 
-── Additional Info ─────────────────────────
-Initial       : ${data.initial || "N/A"}
-Mobile Phone  : ${data.mobile || "N/A"}
-Address 1     : ${data.address1 || "N/A"}
-Address 2     : ${data.address2 || "N/A"}
-City          : ${data.city || "N/A"}
-Zip           : ${data.zip || "N/A"}
-Comments      : ${data.Comments || "N/A"}
-
-── Tracking ────────────────────────────────
-Sub ID        : ${data.SubId || "N/A"}
-Sub ID 2      : ${data.SubId2 || "N/A"}
-Click ID      : ${data.clickid || "N/A"}
-T ID          : ${data.t_id || "N/A"}
-Vendor Lead ID: ${data.VendorLeadId || "N/A"}
-
 ── API Response ────────────────────────────
 Status        : ${data.apiStatus || "N/A"}
 Response      : ${data.apiResponse || "N/A"}
